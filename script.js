@@ -87,17 +87,19 @@ class Calculator {
 }
 
 // Elements
-const numbers = document.querySelectorAll('.nbr');
-const operations = document.querySelectorAll('.oprd');
-const eq = document.querySelector('.eq');
-const del = document.querySelector('.del');
-const clr = document.querySelector('.clr');
-const prev = document.querySelector('.prev');
-const current = document.querySelector('.current');
-
+const desktop = document.querySelector('.desktop')
+const numbers = desktop.querySelectorAll('.nbr');
+const operations = desktop.querySelectorAll('.oprd');
+const eq = desktop.querySelector('.eq');
+const del = desktop.querySelector('.del');
+const clr = desktop.querySelector('.clr');
+const prev = desktop.querySelector('.prev');
+const current = desktop.querySelector('.current');
+let calculator;
 // Init
-const calculator = new Calculator(prev, current);
-
+if(desktop.offsetWidth !== 0) {
+  calculator = new Calculator(prev, current);
+}
 // Append number
 numbers.forEach(btn =>
   btn.addEventListener('click', () => {
@@ -118,7 +120,6 @@ operations.forEach(btn =>
 eq.addEventListener('click', () => {
   calculator.compute();
   calculator.updateDisplay();
-  calculator.clear();
 });
 
 // Clear
@@ -129,6 +130,56 @@ clr.addEventListener('click', () => {
 
 // Delete
 del.addEventListener('click', () => {
+  calculator.delete();
+  calculator.updateDisplay();
+});
+
+// Mobile Support
+// Elements
+const mobile = document.querySelector('.mobile')
+const numbersMobile = mobile.querySelectorAll('.nbr');
+const operationsMobile = mobile.querySelectorAll('.oprd');
+const eqMobile = mobile.querySelector('.eq');
+const delMobile = mobile.querySelector('.del');
+const clrMobile = mobile.querySelector('.clr');
+const prevMobile = mobile.querySelector('.prev');
+const currentMobile = mobile.querySelector('.current');
+
+// Init
+if(mobile.offsetWidth !== 0) {
+  calculator = new Calculator(prevMobile, currentMobile);
+}
+
+// Append number
+numbersMobile.forEach(btn =>
+  btn.addEventListener('touchstart', () => {
+    calculator.appendNumber(btn.textContent);
+    calculator.updateDisplay();
+  })
+);
+
+// Operations
+operationsMobile.forEach(btn =>
+  btn.addEventListener('touchstart', () => {
+    calculator.chooseOperation(btn.textContent);
+    calculator.updateDisplay();
+  })
+);
+
+// Equals
+eqMobile.addEventListener('touchstart', () => {
+  calculator.compute();
+  calculator.updateDisplay();
+});
+
+// Clear
+clrMobile.addEventListener('touchstart', () => {
+  calculator.clear();
+  calculator.updateDisplay();
+});
+
+// Delete
+delMobile.addEventListener('touchstart', () => {
   calculator.delete();
   calculator.updateDisplay();
 });

@@ -57,3 +57,10 @@ body {
   font-size: 2.5rem;
   line-height: 1em;
 }
+
+.mobile {display: none;}
+
+@media (max-width: 500px) {
+  .desktop{display: none;}
+  .mobile{display: grid;}
+}
