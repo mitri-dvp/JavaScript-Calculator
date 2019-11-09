@@ -50,7 +50,7 @@ class Calculator {
         result = prev * current;
         break;
       case '÷':
-        result = (Math.floor((prev / current) * 100)) / 100;
+        result = Math.floor((prev / current) * 100) / 100;
         break;
       default:
         return '';
@@ -118,7 +118,7 @@ operations.forEach(btn =>
 eq.addEventListener('click', () => {
   calculator.compute();
   calculator.updateDisplay();
-  calculator.clear()
+  calculator.clear();
 });
 
 // Clear
@@ -129,42 +129,6 @@ clr.addEventListener('click', () => {
 
 // Delete
 del.addEventListener('click', () => {
-  calculator.delete();
-  calculator.updateDisplay();
-});
-
-// Mobile Suport
-// Append number
-numbers.forEach(btn =>
-  btn.addEventListener('touchstart', () => {
-    calculator.appendNumber(btn.textContent);
-    calculator.updateDisplay();
-  })
-);
-
-// Operations
-operations.forEach(btn =>
-  btn.addEventListener('touchstart', () => {
-    calculator.chooseOperation(btn.textContent);
-    calculator.updateDisplay();
-  })
-);
-
-// Equals
-eq.addEventListener('touchstart', () => {
-  calculator.compute();
-  calculator.updateDisplay();
-});
-
-// Clear
-clr.addEventListener('touchstart', () => {
-  calculator.clear();
-  calculator.updateDisplay();
-  calculator.clear()
-});
-
-// Delete
-del.addEventListener('touchstart', () => {
   calculator.delete();
   calculator.updateDisplay();
 });
