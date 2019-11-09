@@ -131,3 +131,38 @@ del.addEventListener('click', () => {
   calculator.delete();
   calculator.updateDisplay();
 });
+
+// Mobile Suport
+// Append number
+numbers.forEach(btn =>
+  btn.addEventListener('touchstart', () => {
+    calculator.appendNumber(btn.textContent);
+    calculator.updateDisplay();
+  })
+);
+
+// Operations
+operations.forEach(btn =>
+  btn.addEventListener('touchstart', () => {
+    calculator.chooseOperation(btn.textContent);
+    calculator.updateDisplay();
+  })
+);
+
+// Equals
+eq.addEventListener('touchstart', () => {
+  calculator.compute();
+  calculator.updateDisplay();
+});
+
+// Clear
+clr.addEventListener('touchstart', () => {
+  calculator.clear();
+  calculator.updateDisplay();
+});
+
+// Delete
+del.addEventListener('touchstart', () => {
+  calculator.delete();
+  calculator.updateDisplay();
+});
