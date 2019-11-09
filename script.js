@@ -50,7 +50,7 @@ class Calculator {
         result = prev * current;
         break;
       case '÷':
-        result = prev / current;
+        result = (Math.floor((prev / current) * 100)) / 100;
         break;
       default:
         return '';
@@ -118,6 +118,7 @@ operations.forEach(btn =>
 eq.addEventListener('click', () => {
   calculator.compute();
   calculator.updateDisplay();
+  calculator.clear()
 });
 
 // Clear
@@ -159,6 +160,7 @@ eq.addEventListener('touchstart', () => {
 clr.addEventListener('touchstart', () => {
   calculator.clear();
   calculator.updateDisplay();
+  calculator.clear()
 });
 
 // Delete
